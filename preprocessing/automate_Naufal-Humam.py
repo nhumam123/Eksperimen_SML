@@ -43,17 +43,23 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # 3. Oversampling dengan SMOTE (Hanya pada Data Train)
 smote = SMOTE(random_state=42)
 X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
-        
 
-df.to_csv('preprocessing/creditcard_preprocessing_train.csv', index=False)
-df.to_csv('preprocessing/creditcard_preprocessing_test.csv', index=False)
+# Gabungkan X dan y
+train_resampled = X_train_res.copy()
+train_resampled["target"] = y_train_res
+test_resampled = X_test.copy()
+test_resampled["target"] = y_test
+
+# Simpan ke CSV
+train_resampled.to_csv("creditcard_preprocessing_train.csv", index=False)
+test_resampled.to_csv("creditcard_preprocessing_test.csv", index=False)
 
 print('Preprocessed data exported to creditcard_preprocessing_train.csv')
 print('Preprocessed data exported to creditcard_preprocessing_test.csv')
 
 # Display the first few rows of the exported data to confirm
-exported_df_train = pd.read_csv('preprocessing/creditcard_preprocessing_train.csv')
-exported_df_test = pd.read_csv('preprocessing/creditcard_preprocessing_test.csv')
+exported_df_train = pd.read_csv('creditcard_preprocessing_train.csv')
+exported_df_test = pd.read_csv('creditcard_preprocessing_test.csv')
 
 display(exported_df_train.head())
 display(exported_df_test.head())
