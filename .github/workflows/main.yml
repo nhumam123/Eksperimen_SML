@@ -1,0 +1,38 @@
+name: Preprocess Credit Card Data
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Memungkinkan Anda menjalankan workflow secara manual dari tab Actions
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-state: '3.10' # Anda bisa menyesuaikan versi Python sesuai kebutuhan
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas scikit-learn ipython
+
+    - name: Run preprocessing script
+      run: |
+        python automate_Naufal-Humam.py
+
+    - name: Commit and push preprocessed data
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add creditcard_preprocessing.csv
+        git diff-index --quiet HEAD || git commit -m "Automated data preprocessing [skip ci]"
+        git push
