@@ -27,7 +27,7 @@ jobs:
 
     - name: Run preprocessing script
       run: |
-        python automate_Naufal-Humam.py
+        python preprocessing/automate_Naufal-Humam.py
 
     - name: Commit and push preprocessed data
       run: |
