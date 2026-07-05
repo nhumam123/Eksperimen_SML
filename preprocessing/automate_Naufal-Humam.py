@@ -1,8 +1,16 @@
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from IPython.display import display
+import os
 
-df = pd.read_csv('../creditcard.csv')
+# Mengambil base directory dari file skrip ini berada (yaitu folder 'preprocessing')
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Menggabungkan path ke file creditcard.csv yang berada di luar folder preprocessing
+csv_path = os.path.join(base_dir, '../creditcard.csv')
+
+
+df = pd.read_csv(csv_path)
 df.head()
 
 # Scale 'Amount' and 'Time' features
