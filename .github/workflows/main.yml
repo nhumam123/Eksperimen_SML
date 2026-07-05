@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        lfs: true # Jika Anda menggunakan Git LFS untuk file besar, aktifkan ini
 
     - name: Set up Python
       uses: actions/setup-python@v5
