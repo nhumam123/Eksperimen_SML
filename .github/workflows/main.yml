@@ -38,6 +38,7 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add creditcard_preprocessing.csv
+        git add creditcard_preprocessing_test.csv
+        git add creditcard_preprocessing_train.csv
         git diff-index --quiet HEAD || git commit -m "Automated data preprocessing [skip ci]"
         git push
