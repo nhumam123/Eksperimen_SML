@@ -8,9 +8,14 @@ import os
 
 # # Menggabungkan path ke file creditcard.csv yang berada di luar folder preprocessing
 # csv_path = os.path.join(base_dir, 'creditcard.csv')
+# 1. Ambil path absolut dengan dinamis
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(base_dir, '../creditcard.csv')
 
-df = pd.read_csv('creditcard.csv')
+print(f"Mencoba membaca file dari: {csv_path}")
+
+df = pd.read_csv(csv_path)
 df.head()
 
 # Scale 'Amount' and 'Time' features
