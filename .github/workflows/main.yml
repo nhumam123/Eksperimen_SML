@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch: # Memungkinkan Anda menjalankan workflow secara manual dari tab Actions
 
+permissions:
+  contents: write
+
 jobs:
   preprocess:
     runs-on: ubuntu-latest
