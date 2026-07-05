@@ -27,11 +27,11 @@ print("Scaled 'Time' and 'Amount' features. Displaying head to confirm:")
 display(df[['Time', 'Amount', 'Class']].head())
         
 
-df.to_csv('creditcard_preprocessing.csv', index=False)
+df.to_csv('preprocessing/creditcard_preprocessing.csv', index=False)
 
 print('Preprocessed data exported to creditcard_preprocessing.csv')
 
 # Display the first few rows of the exported data to confirm
-exported_df = pd.read_csv('creditcard_preprocessing.csv')
+exported_df = pd.read_csv('preprocessing/creditcard_preprocessing.csv')
 
 display(exported_df.head())
